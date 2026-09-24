@@ -22,10 +22,6 @@ function getComputerChoice() {
     return humanChoice;
  }
 
-const humanSelection = getHumanChoice();
-console.log("User: " + humanSelection);
-const computerSelection = getComputerChoice();
-console.log("Computer: " + computerSelection);
 
 let humanScore = 0;
 let computerScore = 0;
@@ -37,20 +33,39 @@ function playRound(humanChoice, computerChoice) {
   
     if (humanChoice === "PIEDRA" && computerChoice === "TIJERA" || humanChoice === "PAPEL" && computerChoice === "PIEDRA" || humanChoice === "TIJERA" && computerChoice === "PAPEL") {
         humanScore++;
-        return "You win";
+        return "Ganaste";
     } else if (humanChoice === "PIEDRA" && computerChoice === "PAPEL" || humanChoice === "PAPEL" && computerChoice === "TIJERA" || humanChoice === "TIJERA" && computerChoice === "PIEDRA") {
         computerScore++;
-        return "You lose";
+        return "Perdiste";
     } else if (humanChoice === computerChoice) {
-        return "Draw";
+        return "Empate";
     } else {
         return "Error";
     }
 }
 
 
-console.log(playRound(humanSelection, computerSelection));
-console.log(`User: ${humanScore} - Computer: ${computerScore}`);
+function playGame() {
+    for (let ronda = 0; ronda < 5; ronda++) {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
 
+        console.log(`Ronda ${ronda + 1}`);
+        console.log("Usuario: " + humanSelection);
+        console.log("Computadora: " + computerSelection);
+        console.log(playRound(humanSelection, computerSelection));
+    }
 
+    console.log(`Usuario: ${humanScore} - Computadora: ${computerScore}`);
 
+    if (humanScore > computerScore) {
+        console.log("El usuario ganó el juego");
+    } else if (computerScore > humanScore) {
+        console.log("La computadora ganó el juego");
+    } else {
+        console.log("El juego terminó en empate");
+    }
+}
+
+playGame();
+ 
