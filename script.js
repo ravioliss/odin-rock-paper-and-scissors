@@ -63,10 +63,10 @@ function playGame() {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
 
-    console.log(`Ronda ${ronda + 1}`);
+    console.log(`Ronda ${ronda + 1}`); // we add 1 to the round number so it starts at 1 instead of 0
     console.log("Usuario: " + humanSelection);
     console.log("Computadora: " + computerSelection);
-    console.log(playRound(humanSelection, computerSelection));
+    console.log(playRound(humanSelection, computerSelection)); // we pass new variables as arguments of the playRound function so we keep the logic of the game with the response of the user and the computer
   }
 
   console.log(`Usuario: ${humanScore} - Computadora: ${computerScore}`);
